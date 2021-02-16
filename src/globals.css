@@ -1,0 +1,103 @@
+:root {
+  --background: #6B42C6;
+  --orange: #FF9330;
+  --blue: #0077FE;
+  --pink: #FF3BC8;
+  --form-filter:
+    hue-rotate(-182deg) saturate(.72) brightness(1.6);
+  --burst-colors: #7F56D8 0%, #7F56D8 33%, #7249CB 33%, #7249CB 66%, #6E45C7 66%;
+  --burst-position: circle at center;
+}
+html {
+  font-size: 16px;
+  font-family: sans-serif;
+  background-color: var(--background);
+  color: white;
+  line-height: 1;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+button {
+  color: white;
+  background-color: var(--orange);
+  line-height: 1;
+  border: none;
+  padding: .5rem;
+  border-radius: .5rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+button.primary {
+  background-color: var(--pink);
+}
+#appRoot {
+  min-height: 100vh;
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template:
+    ". brand refresh ." auto
+    ". input output ." 1fr
+    / 1fr 2fr 3fr 1fr;
+
+}
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+input {
+  filter: var(--form-filter);
+}
+.burst {
+  padding: 1rem;
+  border-radius: .5rem;
+  background-image: radial-gradient(var(--burst-position),var(--burst-colors));
+}
+.output-item {
+  display: grid;
+  gap: 1rem;
+  grid-template:
+    "label label" 1rem
+    "volume mute" 1rem;
+  align-items: center;
+  transition: opacity .4s ease-in-out;
+}
+.brand {
+  display: grid;
+  font-size: 3rem;
+  --burst-position: circle at center left;
+}
+.input-section {
+  display: flex;
+  flex-direction: column;
+  --burst-position: circle at top right;
+}
+.input-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.output__header {
+  --burst-position: circle at center right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.output-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.volume-visualizer {
+  margin-top: auto;
+  width: 100%;
+  height: auto;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
